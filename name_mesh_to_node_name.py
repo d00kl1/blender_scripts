@@ -1,14 +1,14 @@
 # rename mesh name to object name
 import bpy
 
-collection_name = 'south'
+collection_name = 'north'
 
-obj_name_prefix = 's_'
+obj_name_prefix = 'n_'
 
 for collection in bpy.data.collections:    
     if collection.name == collection_name:
         for obj in collection.all_objects:
-            if not obj.name.startswith(obj_name_prefix):
+            if not obj.name.startswith(obj_name_prefix) and obj.name != collection_name:
                 print(f'Renaming {obj.name} -> {obj_name_prefix}{obj.name}')
                 obj.name = obj_name_prefix + obj.name                
                 
